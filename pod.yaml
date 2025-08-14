@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-hw
+spec:
+  containers:
+  - name: flask-hw
+    image: artline0912/flask_hw:v1
+    ports:
+    - containerPort: 8080

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: flask-statefulset
+spec:
+  selector:
+    matchLabels:
+      app: flask-hw
+  serviceName: "headless-serv"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flask-hw
+    spec:
+      containers:
+      - name: flask-hw
+        image: artline0912/flask_hw:v1
+        ports:
+        - containerPort: 5000

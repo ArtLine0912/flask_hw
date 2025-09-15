@@ -1,21 +1,19 @@
 apiVersion: apps/v1
-kind: Deployment                                          
+kind: DaemonSet
 metadata:
-  name: flask-hw-depl
-  labels:
-    app: flask-hw-depl
+  name: flask-daemonset
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: flask-hw-depl
+      app: flask-hw-dms
   template:
     metadata:
       labels:
-        app: flask-hw-depl
+        app: flask-hw-dms
     spec:
       containers:
-      - name: flask-hw-depl
+      - name: flask-hw
         image: artline0912/flask_hw:v1
         ports:
         - containerPort: 5000
+

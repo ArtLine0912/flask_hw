@@ -1,9 +1,9 @@
-from flask import Flask
+FROM python:3.11-slim
 
-app = Flask(__name__)
+WORKDIR /app
 
-@app.route('/')
-def hello_world():
+COPY main.py /app/
 
-if __name__ == '__main__':
-   app.run(host='0.0.0.0')
+RUN pip install flask
+
+CMD ["python", "main.py"]

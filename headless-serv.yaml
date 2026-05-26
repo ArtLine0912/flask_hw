@@ -5,7 +5,8 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    app: flask-hw
-  ports: 
-  - port: 5000
-    name: http
+    app: flask-hw-sts
+  ports:
+    - port: 5000
+      targetPort: 5000
+      name: http

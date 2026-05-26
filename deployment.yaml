@@ -1,21 +1,34 @@
 apiVersion: apps/v1
-kind: Deployment                                          
+kind: Deployment
 metadata:
-  name: flask-hw-depl
+  name: flask-hw
+  namespace: flask-hw
   labels:
-    app: flask-hw-depl
+    app: flask-hw
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: flask-hw-depl
+      app: flask-hw
   template:
     metadata:
       labels:
-        app: flask-hw-depl
+        app: flask-hw
     spec:
       containers:
-      - name: flask-hw-depl
-        image: artline0912/flask_hw:v1
-        ports:
-        - containerPort: 8080
+        - name: flask-hw
+          image: artline0912/flask_hw:v1
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 20

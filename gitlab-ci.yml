@@ -1,0 +1,12 @@
+stages:
+  - test
+
+test-runner:
+  stage: test
+  tags:
+    - shell
+  script:
+    - whoami
+    - docker version
+    - kubectl get nodes
+    - kubectl get pods -n flask-hw
